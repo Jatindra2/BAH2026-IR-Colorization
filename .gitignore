@@ -1,0 +1,39 @@
+# Python
+
+**pycache**/
+*.py[cod]
+*.log
+
+# Virtual Environments
+
+.venv/
+venv/
+
+# VS Code
+
+.vscode/
+
+# Generated outputs
+
+baseline/output/
+outputs/
+
+# Datasets
+
+datasets/
+
+# Model weights
+
+models/
+*.pth
+*.pt
+*.ckpt
+
+# Notebook checkpoints
+
+.ipynb_checkpoints/
+
+# OS files
+
+.DS_Store
+Thumbs.db
