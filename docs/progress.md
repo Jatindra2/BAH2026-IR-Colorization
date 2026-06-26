@@ -1,21 +1,22 @@
-# BAH 2026 Project Progress
+# Development Progress
 
-## ✅ Milestone 1: Project Setup
-
-Completed:
+## Milestone 1 ✅
 - Repository initialized
+- GitHub configured
 - Project structure created
-- Official BAH baseline integrated
+- Official baseline integrated
 - Python 3.11 environment configured
-- Baseline preprocessing pipeline analyzed
-- Successfully executed dataset generation pipeline
-- Repository organized for AI, backend, frontend, datasets and documentation
+- Baseline pipeline executed successfully
 
-## Current Status
-The official preprocessing pipeline is working successfully.
+## Milestone 2 🔄
+- Project architecture designed
+- Training module created
+- Inference module created
+- Evaluation module created
+- Artifacts directory created
 
-## Next Milestone
-- Acquire Landsat-9 dataset
-- Verify dataset structure
-- Generate training patches
-- Begin Super-Resolution model development
+## Next
+- Dataset acquisition
+- Dataset validation
+- Patch generation
+- Super-resolution training
