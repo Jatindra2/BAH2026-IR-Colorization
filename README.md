@@ -1,69 +1,72 @@
 # 🚀 IRVision AI
 
-### AI-Powered Infrared Image Enhancement & Colorization for Improved Object Interpretation
-
-> **Bharatiya Antariksh Hackathon (BAH) 2026 Submission**
+> **AI-Powered Thermal Infrared Image Enhancement & Colorization**
+> **Bharatiya Antariksh Hackathon (BAH) 2026**
 
 ---
 
-# 📌 Problem Statement
+## 📖 Overview
+
+**IRVision AI** is an end-to-end deep learning solution developed for the **Bharatiya Antariksh Hackathon (BAH) 2026**. The system enhances low-resolution Thermal Infrared (TIR) satellite imagery using Super-Resolution and converts grayscale thermal images into realistic RGB images using deep learning.
+
+The platform provides an intuitive web interface where users can upload thermal images, perform AI inference, and download the generated colorized results.
+
+---
+
+# 🎯 Problem Statement
 
 **Problem Statement 10 – Infrared Image Colorization and Enhancement for Improved Object Interpretation**
 
-The objective is to develop an end-to-end AI pipeline capable of:
+The objective is to develop an AI pipeline capable of:
 
-- Enhancing low-resolution Thermal Infrared (TIR) satellite imagery
-- Performing Super-Resolution from **200m → 100m**
-- Colorizing Thermal Infrared imagery into realistic RGB images
-- Improving object interpretation for downstream geospatial analysis
+* Enhancing low-resolution Thermal Infrared (TIR) satellite imagery.
+* Performing Super-Resolution from **200 m → 100 m**.
+* Colorizing thermal infrared imagery into realistic RGB images.
+* Improving object interpretation for downstream geospatial applications.
 
 ---
 
 # ✨ Features
 
-- Super-Resolution (200m → 100m)
-- Thermal Infrared → RGB Colorization
-- End-to-End AI Pipeline
-- Automatic Model Checkpointing
-- PSNR & SSIM Evaluation
-- FastAPI Backend
-- REST API
-- Swagger Documentation
-- Modular Training Framework
-- Ready for React Frontend
+* AI-based Thermal Image Colorization
+* Super-Resolution (200 m → 100 m)
+* End-to-End Deep Learning Pipeline
+* Automated Training Pipeline
+* PSNR & SSIM Evaluation
+* FastAPI REST Backend
+* Interactive Swagger API Documentation
+* Modern React Frontend
+* Image Upload & AI Inference
+* Download Generated RGB Images
+* Modular Project Structure
 
 ---
 
 # 🏗️ System Pipeline
 
 ```text
-Landsat-9 Dataset
-        │
-        ▼
-Dataset Validation
-        │
-        ▼
-Preprocessing & Patch Generation
-        │
-        ▼
+Thermal Infrared Image
+          │
+          ▼
+Image Preprocessing
+          │
+          ▼
 Super Resolution Model
-(200m → 100m)
-        │
-        ▼
-Colorization Model
-(100m TIR → RGB)
-        │
-        ▼
-Evaluation
-(PSNR • SSIM)
-        │
-        ▼
+     (200m → 100m)
+          │
+          ▼
+RGB Colorization Model
+          │
+          ▼
+Post Processing
+          │
+          ▼
+RGB Output Image
+          │
+          ▼
 FastAPI Backend
-        │
-        ▼
-REST API
-        │
-        ▼
+          │
+          ▼
 React Frontend
 ```
 
@@ -74,22 +77,10 @@ React Frontend
 ```text
 BAH2026-IR-Colorization/
 
-├── api/
-├── artifacts/
-│   ├── checkpoints/
-│   ├── exported/
-│   └── weights/
 ├── backend/
-├── baseline/
-├── datasets/
-├── docs/
 ├── evaluation/
 ├── frontend/
 ├── inference/
-├── notebooks/
-├── reports/
-├── results/
-├── tests/
 ├── training/
 │   ├── colorization/
 │   ├── super_resolution/
@@ -99,6 +90,10 @@ BAH2026-IR-Colorization/
 │   ├── models/
 │   ├── trainers/
 │   └── utils/
+├── baseline/
+├── artifacts/
+├── datasets/
+├── docs/
 ├── README.md
 └── .gitignore
 ```
@@ -107,36 +102,31 @@ BAH2026-IR-Colorization/
 
 # 🛠 Tech Stack
 
-## Machine Learning
+### Artificial Intelligence
 
-- Python
-- PyTorch
-- segmentation-models-pytorch
-- NumPy
-- OpenCV
-- Pillow
+* Python
+* PyTorch
+* segmentation-models-pytorch
+* NumPy
+* OpenCV
+* Pillow
 
-## Geospatial Data
+### Backend
 
-- Rasterio
-- tifffile
-- Landsat-9 Collection-2
+* FastAPI
+* Uvicorn
 
-## Backend
+### Frontend
 
-- FastAPI
-- Uvicorn
+* React
+* Vite
+* Axios
+* CSS
 
-## Frontend (In Progress)
+### Development
 
-- React
-- TypeScript
-- Tailwind CSS
-
-## Development
-
-- Git
-- GitHub
+* Git
+* GitHub
 
 ---
 
@@ -144,87 +134,42 @@ BAH2026-IR-Colorization/
 
 Current evaluation metrics:
 
-- PSNR
-- SSIM
+* PSNR
+* SSIM
 
-Average Results:
-
-| Metric | Score |
-|---------|------:|
-| PSNR | **20.43 dB** |
-| SSIM | **0.598** |
-
----
-
-# 📈 Development Roadmap
-
-| Milestone | Status |
-|-----------|--------|
-| ✅ Repository Setup | Complete |
-| ✅ Official Baseline Integration | Complete |
-| ✅ Dataset Preprocessing | Complete |
-| ✅ Patch Generation | Complete |
-| ✅ Dataset Loader | Complete |
-| ✅ Super-Resolution Model | Complete |
-| ✅ Super-Resolution Training | Complete |
-| ✅ Colorization Model | Complete |
-| ✅ Colorization Training | Complete |
-| ✅ Automatic Checkpoint Saving | Complete |
-| ✅ End-to-End Inference | Complete |
-| ✅ Evaluation Pipeline | Complete |
-| ✅ FastAPI Backend | Complete |
-| ✅ REST API | Complete |
-| ⏳ React Frontend | In Progress |
-| ⏳ Docker Deployment | Pending |
-| ⏳ Final Submission | Pending |
-
----
-
-# 🎉 Latest Progress
-
-Completed:
-
-- ✅ Official BAH preprocessing integration
-- ✅ Dataset loader
-- ✅ Super-Resolution model
-- ✅ Colorization model
-- ✅ Training pipeline
-- ✅ Automatic checkpoint saving
-- ✅ End-to-End inference pipeline
-- ✅ PSNR & SSIM evaluation
-- ✅ FastAPI backend
-- ✅ REST API
-- ✅ Swagger API documentation
-
----
-
-# 🚀 Running the Project
-
-## Train Models
-
-```bash
-python training/train.py
-```
-
-## Run Evaluation
+Evaluation pipeline:
 
 ```bash
 python evaluation/evaluate.py
 ```
 
-## Run Inference
+---
+
+# 🚀 Getting Started
+
+## Clone the Repository
 
 ```bash
-python inference/infer.py
+git clone https://github.com/Jatindra2/BAH2026-IR-Colorization.git
+
+cd BAH2026-IR-Colorization
 ```
 
-## Start Backend
+---
+
+## Backend
 
 ```bash
 uvicorn backend.app:app --reload
 ```
 
-Open:
+Backend:
+
+```
+http://127.0.0.1:8000
+```
+
+Swagger Documentation:
 
 ```
 http://127.0.0.1:8000/docs
@@ -232,32 +177,80 @@ http://127.0.0.1:8000/docs
 
 ---
 
-# 📊 Current Status
+## Frontend
 
-| Module | Status |
-|---------|--------|
-| Dataset Pipeline | ✅ |
-| Super Resolution | ✅ |
-| Colorization | ✅ |
-| Training | ✅ |
-| Inference | ✅ |
-| Evaluation | ✅ |
-| FastAPI Backend | ✅ |
-| REST API | ✅ |
-| Swagger UI | ✅ |
-| Frontend | ⏳ |
-| Deployment | ⏳ |
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+Frontend:
+
+```
+http://localhost:5173
+```
 
 ---
 
-# 🚀 Upcoming Work
+## Training
 
-- React Dashboard
-- Docker Support
-- Cloud Deployment
-- Documentation
-- Final Model Optimization
-- Hackathon Submission
+```bash
+python training/train.py
+```
+
+---
+
+## Inference
+
+```bash
+python inference/infer.py
+```
+
+---
+
+## Evaluation
+
+```bash
+python evaluation/evaluate.py
+```
+
+---
+
+# 📊 Project Status
+
+| Module                 | Status         |
+| ---------------------- | -------------- |
+| Dataset Pipeline       | ✅ Complete     |
+| Super-Resolution       | ✅ Complete     |
+| Colorization           | ✅ Complete     |
+| Training Pipeline      | ✅ Complete     |
+| Inference Pipeline     | ✅ Complete     |
+| Evaluation             | ✅ Complete     |
+| FastAPI Backend        | ✅ Complete     |
+| REST API               | ✅ Complete     |
+| Swagger Documentation  | ✅ Complete     |
+| React Frontend         | ✅ Complete     |
+| End-to-End Integration | ✅ Complete     |
+| UI Enhancement         | 🚧 In Progress |
+| Model Optimization     | 🚧 In Progress |
+| Deployment             | ⏳ Pending      |
+
+---
+
+# 🎯 Upcoming Improvements
+
+* Modern UI/UX redesign
+* Drag & Drop Upload
+* Before/After Image Comparison
+* Improved AI Processing Experience
+* Training on Larger Thermal Datasets
+* Higher PSNR & SSIM Performance
+* Docker Support
+* Cloud Deployment
+* Final Hackathon Submission
 
 ---
 
@@ -265,12 +258,18 @@ http://127.0.0.1:8000/docs
 
 This repository includes the official preprocessing baseline provided for the Bharatiya Antariksh Hackathon.
 
-All AI models, training pipelines, inference modules, evaluation scripts, backend services, frontend components, and documentation are independently developed as part of our hackathon solution.
+The AI models, training pipeline, inference pipeline, evaluation framework, backend services, frontend application, and documentation have been developed as part of our hackathon solution.
 
 ---
 
-# ⭐ Project Progress
+# 👥 Team
 
-**Overall Completion:** **~95%**
+Developed for **Bharatiya Antariksh Hackathon (BAH) 2026**
 
-**Status:** 🚀 Backend Complete | Frontend Under Development
+---
+
+## ⭐ Project Progress
+
+**Overall Completion:** **96%**
+
+**Current Focus:** UI/UX Redesign • Model Optimization • Dataset Expansion
