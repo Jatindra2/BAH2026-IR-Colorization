@@ -72,3 +72,6 @@ baseline/input/
 .pytest_cache/
 .mypy_cache/
 .coverage
+
+# Temporary files
+temp/
