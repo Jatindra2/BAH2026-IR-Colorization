@@ -1,0 +1,26 @@
+# Dataset
+dataset:
+  root: ../../baseline/output/patches
+
+# DataLoader
+dataloader:
+  batch_size: 2
+  shuffle: true
+  num_workers: 0
+
+# Training
+training:
+  epochs: 50
+  learning_rate: 0.0002
+  device: "cpu"
+
+# Model
+model:
+  image_size: 512
+  input_channels: 1
+  output_channels: 3
+
+# Checkpoints
+checkpoint:
+  save_dir: "../../artifacts/checkpoints"
+  save_every: 5
