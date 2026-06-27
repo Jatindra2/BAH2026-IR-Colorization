@@ -2,7 +2,7 @@
 
 ### AI-Powered Infrared Image Enhancement & Colorization for Improved Object Interpretation
 
-> Bharatiya Antariksh Hackathon (BAH) 2026 Submission
+> **Bharatiya Antariksh Hackathon (BAH) 2026 Submission**
 
 ---
 
@@ -12,53 +12,52 @@
 
 Develop an end-to-end AI pipeline capable of:
 
-* Enhancing low-resolution thermal infrared (TIR) satellite imagery.
-* Performing super-resolution from **200m → 100m**.
-* Colorizing thermal images into realistic RGB representations.
-* Improving interpretation for downstream analysis and decision-making.
+* Enhancing low-resolution Thermal Infrared (TIR) satellite imagery
+* Performing super-resolution from **200m → 100m**
+* Colorizing thermal images into realistic RGB representations
+* Improving object interpretation for downstream geospatial analysis
 
 ---
 
-# 🎯 Objectives
+# 🎯 Project Objectives
 
-* Develop a Super-Resolution model for thermal infrared imagery.
-* Develop a Thermal-to-RGB Colorization model.
-* Build a scalable AI training pipeline.
-* Create a production-ready inference API.
-* Develop an interactive web dashboard for image processing and visualization.
-* Generate evaluation reports using quantitative image quality metrics.
+* Develop a Super-Resolution model for Thermal Infrared imagery
+* Develop a Thermal-to-RGB Colorization model
+* Build a scalable AI training pipeline
+* Create a production-ready inference API
+* Develop an interactive web dashboard
+* Evaluate models using quantitative image quality metrics
 
 ---
 
-# 🏗️ Project Architecture
+# 🏗️ System Architecture
 
 ```text
-Landsat Dataset
-        │
-        ▼
+Landsat-9 Level-2 Dataset
+           │
+           ▼
 Dataset Validation
-        │
-        ▼
-Patch Generation
-        │
-        ▼
+           │
+           ▼
+Preprocessing & Patch Generation
+           │
+           ▼
 Super Resolution Model
-(200m TIR → 100m TIR)
-        │
-        ▼
+ (200m TIR → 100m TIR)
+           │
+           ▼
 Colorization Model
-(100m TIR → RGB)
-        │
-        ▼
+ (100m TIR → RGB)
+           │
+           ▼
 Evaluation
 (PSNR • SSIM • LPIPS • FID)
-        │
-        ▼
-Inference API
-(FastAPI)
-        │
-        ▼
-React Dashboard
+           │
+           ▼
+Inference API (FastAPI)
+           │
+           ▼
+Web Dashboard
 ```
 
 ---
@@ -70,11 +69,8 @@ BAH2026-IR-Colorization/
 
 ├── api/
 ├── artifacts/
-│   ├── checkpoints/
-│   ├── exported/
-│   └── weights/
 ├── backend/
-├── baseline/
+├── baseline/          # Official preprocessing pipeline
 ├── datasets/
 ├── docs/
 ├── evaluation/
@@ -85,14 +81,13 @@ BAH2026-IR-Colorization/
 ├── results/
 ├── tests/
 ├── training/
-│   ├── colorization/
 │   ├── configs/
 │   ├── datasets/
 │   ├── losses/
 │   ├── models/
-│   ├── super_resolution/
 │   ├── trainers/
 │   └── utils/
+├── .gitignore
 └── README.md
 ```
 
@@ -103,7 +98,7 @@ BAH2026-IR-Colorization/
 ### AI & Machine Learning
 
 * Python
-* PyTorch
+* PyTorch *(planned)*
 * NumPy
 * OpenCV
 * Pillow
@@ -111,51 +106,89 @@ BAH2026-IR-Colorization/
 
 ### Backend
 
-* FastAPI
+* FastAPI *(planned)*
 
 ### Frontend
 
-* React
-* TypeScript
-* Tailwind CSS
+* React *(planned)*
+* TypeScript *(planned)*
+* Tailwind CSS *(planned)*
 
-### Development
+### Development Tools
 
 * Git
 * GitHub
-* Docker (planned)
+* Docker *(planned)*
 
 ---
 
 # 📈 Development Roadmap
 
-* ✅ Milestone 1 – Repository Setup & Baseline Integration
-* ✅ Milestone 2 – Project Architecture
-* ⏳ Milestone 3 – Dataset Acquisition & Validation
-* ⏳ Milestone 4 – Super-Resolution Model
-* ⏳ Milestone 5 – Colorization Model
-* ⏳ Milestone 6 – Model Evaluation
-* ⏳ Milestone 7 – Backend API
-* ⏳ Milestone 8 – Frontend Dashboard
-* ⏳ Milestone 9 – Deployment & Final Submission
+| Milestone                                  | Status      |
+| ------------------------------------------ | ----------- |
+| ✅ Repository Setup                         | Complete    |
+| ✅ Official Baseline Integration            | Complete    |
+| ✅ Project Architecture                     | Complete    |
+| ✅ Landsat Dataset Acquisition              | Complete    |
+| ✅ Dataset Preprocessing & Patch Generation | Complete    |
+| 🔄 PyTorch Dataset Loader                  | In Progress |
+| ⏳ Super-Resolution Model                   | Planned     |
+| ⏳ Colorization Model                       | Planned     |
+| ⏳ Model Training & Evaluation              | Planned     |
+| ⏳ Backend API                              | Planned     |
+| ⏳ Frontend Dashboard                       | Planned     |
+| ⏳ Deployment & Final Submission            | Planned     |
 
 ---
 
-# 📊 Current Progress
+# 🎉 Latest Progress
 
-| Module                 | Status        |
-| ---------------------- | ------------- |
-| Repository Setup       | ✅ Complete    |
-| Baseline Integration   | ✅ Complete    |
-| Project Architecture   | ✅ Complete    |
-| Dataset Preparation    | ⏳ In Progress |
-| Super-Resolution Model | ⏳ Planned     |
-| Colorization Model     | ⏳ Planned     |
-| Backend API            | ⏳ Planned     |
-| Frontend Dashboard     | ⏳ Planned     |
+Successfully completed the official preprocessing workflow using a **Landsat-9 Level-2** scene.
+
+Current achievements include:
+
+* ✅ Downloaded and validated Landsat-9 imagery
+* ✅ Generated RGB images from spectral bands
+* ✅ Created 100m and 200m thermal imagery
+* ✅ Successfully generated **16 aligned training patches**
+* ✅ Organized a modular project structure for future development
+
+---
+
+# 📊 Current Project Status
+
+| Module                 | Status         |
+| ---------------------- | -------------- |
+| Repository Setup       | ✅ Complete     |
+| Baseline Integration   | ✅ Complete     |
+| Landsat Dataset        | ✅ Complete     |
+| Dataset Preprocessing  | ✅ Complete     |
+| Patch Generation       | ✅ Complete     |
+| PyTorch Dataset Loader | 🔄 In Progress |
+| AI Models              | ⏳ Planned      |
+| Backend API            | ⏳ Planned      |
+| Frontend Dashboard     | ⏳ Planned      |
+
+---
+
+# 🚀 Next Milestone
+
+The next development phase focuses on implementing the AI pipeline:
+
+* Build the PyTorch Dataset Loader
+* Develop the Super-Resolution Network
+* Develop the Thermal-to-RGB Colorization Network
+* Implement the training pipeline
+* Integrate inference into the web application
 
 ---
 
 # 📜 License
 
-This repository includes the official baseline code in the `baseline/` directory for reference. All custom development is implemented outside the baseline to maintain a clean separation between the reference implementation and our enhancements.
+This repository includes the official preprocessing baseline in the `baseline/` directory for reference.
+
+All custom AI models, training code, backend services, and frontend components are developed separately to maintain a clean separation between the reference implementation and our solution.
+
+---
+
+⭐ **Project Status:** Active Development

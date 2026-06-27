@@ -1,39 +1,35 @@
 # Python
-
-**pycache**/
+__pycache__/
 *.py[cod]
 *.log
 
 # Virtual Environments
-
 .venv/
 venv/
 
 # VS Code
-
 .vscode/
 
 # Generated outputs
-
 baseline/output/
 outputs/
+results/
+artifacts/
 
-# Datasets
-
+# Downloaded datasets
+baseline/input/
 datasets/
 
 # Model weights
-
 models/
 *.pth
 *.pt
 *.ckpt
+*.onnx
 
 # Notebook checkpoints
-
 .ipynb_checkpoints/
 
 # OS files
-
 .DS_Store
 Thumbs.db
