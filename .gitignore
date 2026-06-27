@@ -1,4 +1,3 @@
-```gitignore
 # ============================================================
 # Python
 # ============================================================
@@ -41,23 +40,26 @@ Thumbs.db
 # ============================================================
 
 baseline/output/
-outputs/
 results/
+outputs/
 predictions/
-artifacts/
+
+# Ignore generated model checkpoints
+artifacts/checkpoints/
+artifacts/exported/
+artifacts/weights/
 
 # ============================================================
 # Downloaded Datasets
 # ============================================================
 
-baseline/input/
 datasets/
+baseline/input/
 
 # ============================================================
 # Model Weights
 # ============================================================
 
-models/
 *.pth
 *.pt
 *.ckpt
@@ -69,4 +71,4 @@ models/
 
 .pytest_cache/
 .mypy_cache/
-```
+.coverage

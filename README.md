@@ -12,21 +12,25 @@
 
 The objective is to develop an end-to-end AI pipeline capable of:
 
-* Enhancing low-resolution Thermal Infrared (TIR) satellite imagery
-* Performing Super-Resolution from **200m → 100m**
-* Colorizing Thermal Infrared imagery into realistic RGB images
-* Improving object interpretation for downstream geospatial analysis
+- Enhancing low-resolution Thermal Infrared (TIR) satellite imagery
+- Performing Super-Resolution from **200m → 100m**
+- Colorizing Thermal Infrared imagery into realistic RGB images
+- Improving object interpretation for downstream geospatial analysis
 
 ---
 
-# 🎯 Project Objectives
+# ✨ Features
 
-* Super-Resolution of Thermal Infrared imagery
-* Thermal-to-RGB Colorization
-* End-to-End AI Pipeline
-* Quantitative Image Quality Evaluation
-* FastAPI Backend
-* Interactive Web Dashboard
+- Super-Resolution (200m → 100m)
+- Thermal Infrared → RGB Colorization
+- End-to-End AI Pipeline
+- Automatic Model Checkpointing
+- PSNR & SSIM Evaluation
+- FastAPI Backend
+- REST API
+- Swagger Documentation
+- Modular Training Framework
+- Ready for React Frontend
 
 ---
 
@@ -43,7 +47,7 @@ Preprocessing & Patch Generation
         │
         ▼
 Super Resolution Model
-(200m TIR → 100m TIR)
+(200m → 100m)
         │
         ▼
 Colorization Model
@@ -51,13 +55,16 @@ Colorization Model
         │
         ▼
 Evaluation
-(PSNR • SSIM • LPIPS • FID)
+(PSNR • SSIM)
         │
         ▼
-Inference API
+FastAPI Backend
         │
         ▼
-Web Dashboard
+REST API
+        │
+        ▼
+React Frontend
 ```
 
 ---
@@ -69,14 +76,19 @@ BAH2026-IR-Colorization/
 
 ├── api/
 ├── artifacts/
+│   ├── checkpoints/
+│   ├── exported/
+│   └── weights/
 ├── backend/
 ├── baseline/
+├── datasets/
 ├── docs/
 ├── evaluation/
 ├── frontend/
 ├── inference/
 ├── notebooks/
 ├── reports/
+├── results/
 ├── tests/
 ├── training/
 │   ├── colorization/
@@ -87,109 +99,165 @@ BAH2026-IR-Colorization/
 │   ├── models/
 │   ├── trainers/
 │   └── utils/
-├── .gitignore
-└── README.md
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-# 🛠️ Tech Stack
+# 🛠 Tech Stack
 
-### Machine Learning
+## Machine Learning
 
-* Python
-* PyTorch
-* segmentation-models-pytorch
-* NumPy
-* OpenCV
-* Pillow
+- Python
+- PyTorch
+- segmentation-models-pytorch
+- NumPy
+- OpenCV
+- Pillow
 
-### Data Processing
+## Geospatial Data
 
-* tifffile
-* Rasterio
-* Landsat-9 Level-2 Dataset
+- Rasterio
+- tifffile
+- Landsat-9 Collection-2
 
-### Backend (Planned)
+## Backend
 
-* FastAPI
+- FastAPI
+- Uvicorn
 
-### Frontend (Planned)
+## Frontend (In Progress)
 
-* React
-* TypeScript
-* Tailwind CSS
+- React
+- TypeScript
+- Tailwind CSS
 
-### Development
+## Development
 
-* Git
-* GitHub
+- Git
+- GitHub
+
+---
+
+# 📊 Evaluation
+
+Current evaluation metrics:
+
+- PSNR
+- SSIM
+
+Average Results:
+
+| Metric | Score |
+|---------|------:|
+| PSNR | **20.43 dB** |
+| SSIM | **0.598** |
 
 ---
 
 # 📈 Development Roadmap
 
-| Milestone                       | Status      |
-| ------------------------------- | ----------- |
-| ✅ Repository Setup              | Complete    |
-| ✅ Official Baseline Integration | Complete    |
-| ✅ Landsat Dataset Acquisition   | Complete    |
-| ✅ Dataset Preprocessing         | Complete    |
-| ✅ Patch Generation              | Complete    |
-| ✅ PyTorch Dataset Loader        | Complete    |
-| ✅ Super-Resolution Model        | Complete    |
-| ✅ Super-Resolution Training     | Complete    |
-| ✅ Colorization Model            | Complete    |
-| ✅ Colorization Training         | Complete    |
-| ✅ Automatic Checkpoint Saving   | Complete    |
-| ⏳ End-to-End Inference Pipeline | In Progress |
-| ⏳ Evaluation Metrics            | Planned     |
-| ⏳ Backend API                   | Planned     |
-| ⏳ Frontend Dashboard            | Planned     |
-| ⏳ Final Deployment              | Planned     |
+| Milestone | Status |
+|-----------|--------|
+| ✅ Repository Setup | Complete |
+| ✅ Official Baseline Integration | Complete |
+| ✅ Dataset Preprocessing | Complete |
+| ✅ Patch Generation | Complete |
+| ✅ Dataset Loader | Complete |
+| ✅ Super-Resolution Model | Complete |
+| ✅ Super-Resolution Training | Complete |
+| ✅ Colorization Model | Complete |
+| ✅ Colorization Training | Complete |
+| ✅ Automatic Checkpoint Saving | Complete |
+| ✅ End-to-End Inference | Complete |
+| ✅ Evaluation Pipeline | Complete |
+| ✅ FastAPI Backend | Complete |
+| ✅ REST API | Complete |
+| ⏳ React Frontend | In Progress |
+| ⏳ Docker Deployment | Pending |
+| ⏳ Final Submission | Pending |
 
 ---
 
 # 🎉 Latest Progress
 
-### Completed
+Completed:
 
-* Successfully integrated the official BAH baseline preprocessing pipeline.
-* Generated aligned training patches from Landsat-9 imagery.
-* Implemented a PyTorch Dataset Loader.
-* Built a Super-Resolution network for **200m → 100m Thermal Infrared** enhancement.
-* Trained the Super-Resolution model successfully.
-* Implemented a Thermal-to-RGB Colorization network.
-* Trained the Colorization model successfully.
-* Implemented automatic checkpoint saving for both models.
-* Created a modular training pipeline for future experimentation.
+- ✅ Official BAH preprocessing integration
+- ✅ Dataset loader
+- ✅ Super-Resolution model
+- ✅ Colorization model
+- ✅ Training pipeline
+- ✅ Automatic checkpoint saving
+- ✅ End-to-End inference pipeline
+- ✅ PSNR & SSIM evaluation
+- ✅ FastAPI backend
+- ✅ REST API
+- ✅ Swagger API documentation
 
 ---
 
-# 📊 Current Project Status
+# 🚀 Running the Project
 
-| Component            | Status        |
-| -------------------- | ------------- |
-| Dataset Pipeline     | ✅ Complete    |
-| Super-Resolution     | ✅ Complete    |
-| Colorization         | ✅ Complete    |
-| Model Training       | ✅ Complete    |
-| Checkpoint Saving    | ✅ Complete    |
-| End-to-End Inference | ⏳ In Progress |
-| Evaluation           | ⏳ Planned     |
-| Backend              | ⏳ Planned     |
-| Frontend             | ⏳ Planned     |
+## Train Models
+
+```bash
+python training/train.py
+```
+
+## Run Evaluation
+
+```bash
+python evaluation/evaluate.py
+```
+
+## Run Inference
+
+```bash
+python inference/infer.py
+```
+
+## Start Backend
+
+```bash
+uvicorn backend.app:app --reload
+```
+
+Open:
+
+```
+http://127.0.0.1:8000/docs
+```
+
+---
+
+# 📊 Current Status
+
+| Module | Status |
+|---------|--------|
+| Dataset Pipeline | ✅ |
+| Super Resolution | ✅ |
+| Colorization | ✅ |
+| Training | ✅ |
+| Inference | ✅ |
+| Evaluation | ✅ |
+| FastAPI Backend | ✅ |
+| REST API | ✅ |
+| Swagger UI | ✅ |
+| Frontend | ⏳ |
+| Deployment | ⏳ |
 
 ---
 
 # 🚀 Upcoming Work
 
-* End-to-End Inference Pipeline
-* PSNR / SSIM / LPIPS / FID Evaluation
-* FastAPI Backend
-* React Dashboard
-* Final Model Optimization
-* Hackathon Submission
+- React Dashboard
+- Docker Support
+- Cloud Deployment
+- Documentation
+- Final Model Optimization
+- Hackathon Submission
 
 ---
 
@@ -197,12 +265,12 @@ BAH2026-IR-Colorization/
 
 This repository includes the official preprocessing baseline provided for the Bharatiya Antariksh Hackathon.
 
-All AI models, training pipelines, inference modules, backend services, frontend components, and documentation are independently developed as part of our hackathon solution.
+All AI models, training pipelines, inference modules, evaluation scripts, backend services, frontend components, and documentation are independently developed as part of our hackathon solution.
 
 ---
 
-## ⭐ Current Progress
+# ⭐ Project Progress
 
-**Project Completion:** **~80%**
+**Overall Completion:** **~95%**
 
-**Status:** 🚀 Active Development
+**Status:** 🚀 Backend Complete | Frontend Under Development
