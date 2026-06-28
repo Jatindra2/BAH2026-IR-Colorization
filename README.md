@@ -1,73 +1,97 @@
 # 🚀 IRVision AI
 
-> **AI-Powered Thermal Infrared Image Enhancement & Colorization**
-> **Bharatiya Antariksh Hackathon (BAH) 2026**
+### AI-Powered Thermal Infrared Image Enhancement & Colorization
+
+**Bharatiya Antariksh Hackathon (BAH) 2026**
 
 ---
 
 ## 📖 Overview
 
-**IRVision AI** is an end-to-end deep learning solution developed for the **Bharatiya Antariksh Hackathon (BAH) 2026**. The system enhances low-resolution Thermal Infrared (TIR) satellite imagery using Super-Resolution and converts grayscale thermal images into realistic RGB images using deep learning.
+**IRVision AI** is an end-to-end deep learning solution developed for the **Bharatiya Antariksh Hackathon (BAH) 2026**. The system enhances low-resolution Thermal Infrared (TIR) satellite imagery using Super-Resolution and converts grayscale thermal infrared images into realistic RGB images using deep learning.
 
-The platform provides an intuitive web interface where users can upload thermal images, perform AI inference, and download the generated colorized results.
+The project provides a complete AI pipeline with:
+
+* Deep Learning Models
+* FastAPI Backend
+* React Frontend
+* End-to-End AI Inference
+* Interactive Web Interface
+
+Users can upload a thermal infrared satellite image (`.npy`), perform AI inference, and download the enhanced RGB image.
 
 ---
 
 # 🎯 Problem Statement
 
-**Problem Statement 10 – Infrared Image Colorization and Enhancement for Improved Object Interpretation**
+### Problem Statement 10
 
-The objective is to develop an AI pipeline capable of:
+**Infrared Image Colorization and Enhancement for Improved Object Interpretation**
 
-* Enhancing low-resolution Thermal Infrared (TIR) satellite imagery.
-* Performing Super-Resolution from **200 m → 100 m**.
-* Colorizing thermal infrared imagery into realistic RGB images.
-* Improving object interpretation for downstream geospatial applications.
+The objective is to develop an AI system capable of:
+
+* Enhancing low-resolution Thermal Infrared imagery
+* Performing Super Resolution (200 m → 100 m)
+* Colorizing thermal infrared images into realistic RGB images
+* Improving object interpretation for remote sensing applications
 
 ---
 
 # ✨ Features
 
-* AI-based Thermal Image Colorization
-* Super-Resolution (200 m → 100 m)
-* End-to-End Deep Learning Pipeline
-* Automated Training Pipeline
-* PSNR & SSIM Evaluation
-* FastAPI REST Backend
-* Interactive Swagger API Documentation
-* Modern React Frontend
-* Image Upload & AI Inference
-* Download Generated RGB Images
-* Modular Project Structure
+## AI
+
+* Thermal Infrared Image Enhancement
+* Deep Learning Super Resolution
+* AI-Based Image Colorization
+* End-to-End Inference Pipeline
+* Modular Model Architecture
+
+## Backend
+
+* FastAPI REST API
+* Interactive Swagger Documentation
+* Model Loading & Inference
+* Image Validation
+* Logging & Error Handling
+
+## Frontend
+
+* Modern React + Vite Interface
+* Image Upload
+* AI Processing
+* Result Visualization
+* Download Generated Images
+* Responsive Design
 
 ---
 
-# 🏗️ System Pipeline
+# 🏗️ System Architecture
 
 ```text
-Thermal Infrared Image
-          │
-          ▼
-Image Preprocessing
-          │
-          ▼
-Super Resolution Model
-     (200m → 100m)
-          │
-          ▼
-RGB Colorization Model
-          │
-          ▼
-Post Processing
-          │
-          ▼
-RGB Output Image
-          │
-          ▼
-FastAPI Backend
-          │
-          ▼
-React Frontend
+               Thermal Image (.npy)
+                        │
+                        ▼
+              Image Preprocessing
+                        │
+                        ▼
+        Super Resolution Neural Network
+                 (200 m → 100 m)
+                        │
+                        ▼
+          AI Colorization Network
+                        │
+                        ▼
+             Image Post Processing
+                        │
+                        ▼
+                 RGB Output Image
+                        │
+                        ▼
+                FastAPI Backend
+                        │
+                        ▼
+               React Frontend
 ```
 
 ---
@@ -77,77 +101,79 @@ React Frontend
 ```text
 BAH2026-IR-Colorization/
 
+├── api/
+├── artifacts/
+│   ├── checkpoints/
+│   └── exported/
+│
 ├── backend/
+│   ├── app.py
+│   ├── config.py
+│   ├── inference.py
+│   ├── logger.py
+│   ├── model_loader.py
+│   ├── validators.py
+│   ├── cleanup.py
+│   └── requirements.txt
+│
+├── baseline/
+├── datasets/
+├── docs/
 ├── evaluation/
 ├── frontend/
-├── inference/
+├── notebooks/
+├── reports/
+├── results/
+├── tests/
+│
 ├── training/
 │   ├── colorization/
-│   ├── super_resolution/
 │   ├── configs/
 │   ├── datasets/
 │   ├── losses/
 │   ├── models/
+│   ├── super_resolution/
 │   ├── trainers/
 │   └── utils/
-├── baseline/
-├── artifacts/
-├── datasets/
-├── docs/
-├── README.md
-└── .gitignore
+│
+├── .gitignore
+└── README.md
 ```
 
 ---
 
-# 🛠 Tech Stack
+# 🛠️ Tech Stack
 
-### Artificial Intelligence
+## Artificial Intelligence
 
 * Python
 * PyTorch
-* segmentation-models-pytorch
 * NumPy
 * OpenCV
 * Pillow
 
-### Backend
+## Backend
 
 * FastAPI
 * Uvicorn
 
-### Frontend
+## Frontend
 
 * React
 * Vite
 * Axios
 * CSS
 
-### Development
+## Development
 
 * Git
 * GitHub
 
 ---
 
-# 📊 Evaluation
-
-Current evaluation metrics:
-
-* PSNR
-* SSIM
-
-Evaluation pipeline:
-
-```bash
-python evaluation/evaluate.py
-```
-
----
-
 # 🚀 Getting Started
 
-## Clone the Repository
+## 1. Clone Repository
 
 ```bash
 git clone https://github.com/Jatindra2/BAH2026-IR-Colorization.git
@@ -157,10 +183,14 @@ cd BAH2026-IR-Colorization
 
 ---
 
-## Backend
+## 2. Backend Setup
 
 ```bash
-uvicorn backend.app:app --reload
+cd backend
+
+pip install -r requirements.txt
+
+uvicorn app:app --reload
 ```
 
 Backend:
@@ -169,7 +199,7 @@ Backend:
 http://127.0.0.1:8000
 ```
 
-Swagger Documentation:
+Swagger API:
 
 ```
 http://127.0.0.1:8000/docs
@@ -177,7 +207,7 @@ http://127.0.0.1:8000/docs
 
 ---
 
-## Frontend
+## 3. Frontend Setup
 
 ```bash
 cd frontend
@@ -195,23 +225,36 @@ http://localhost:5173
 
 ---
 
-## Training
+# 📤 API Endpoint
 
-```bash
-python training/train.py
+## POST `/predict`
+
+Upload a thermal infrared `.npy` file.
+
+### Request
+
+```
+multipart/form-data
+
+file: thermal_image.npy
+```
+
+### Response
+
+```
+PNG Image
 ```
 
 ---
 
-## Inference
+# 📊 Evaluation
 
-```bash
-python inference/infer.py
-```
+Current evaluation metrics include:
 
----
+* PSNR (Peak Signal-to-Noise Ratio)
+* SSIM (Structural Similarity Index)
 
-## Evaluation
+Evaluation:
 
 ```bash
 python evaluation/evaluate.py
@@ -219,57 +262,85 @@ python evaluation/evaluate.py
 
 ---
 
-# 📊 Project Status
+# 🧠 AI Pipeline
 
-| Module                 | Status         |
-| ---------------------- | -------------- |
-| Dataset Pipeline       | ✅ Complete     |
-| Super-Resolution       | ✅ Complete     |
-| Colorization           | ✅ Complete     |
-| Training Pipeline      | ✅ Complete     |
-| Inference Pipeline     | ✅ Complete     |
-| Evaluation             | ✅ Complete     |
-| FastAPI Backend        | ✅ Complete     |
-| REST API               | ✅ Complete     |
-| Swagger Documentation  | ✅ Complete     |
-| React Frontend         | ✅ Complete     |
-| End-to-End Integration | ✅ Complete     |
-| UI Enhancement         | 🚧 In Progress |
-| Model Optimization     | 🚧 In Progress |
-| Deployment             | ⏳ Pending      |
-
----
-
-# 🎯 Upcoming Improvements
-
-* Modern UI/UX redesign
-* Drag & Drop Upload
-* Before/After Image Comparison
-* Improved AI Processing Experience
-* Training on Larger Thermal Datasets
-* Higher PSNR & SSIM Performance
-* Docker Support
-* Cloud Deployment
-* Final Hackathon Submission
+```
+Thermal Image
+      │
+      ▼
+Normalization
+      │
+      ▼
+Super Resolution Network
+      │
+      ▼
+Colorization Network
+      │
+      ▼
+RGB Image
+```
 
 ---
 
-# 📜 License
+# 📈 Current Project Status
+
+| Module                    | Status         |
+| ------------------------- | -------------- |
+| Dataset Pipeline          | ✅ Complete     |
+| Super Resolution Model    | ✅ Complete     |
+| Colorization Model        | ✅ Complete     |
+| Training Pipeline         | ✅ Complete     |
+| Evaluation Pipeline       | ✅ Complete     |
+| FastAPI Backend           | ✅ Complete     |
+| REST API                  | ✅ Complete     |
+| React Frontend            | ✅ Complete     |
+| End-to-End Integration    | ✅ Complete     |
+| Model Output Optimization | 🚧 In Progress |
+| UI/UX Enhancement         | 🚧 In Progress |
+| Docker Deployment         | ⏳ Planned      |
+| Cloud Deployment          | ⏳ Planned      |
+
+---
+
+# 🎯 Future Improvements
+
+* Improve AI colorization quality
+* Train on larger thermal datasets
+* Add side-by-side image comparison
+* Drag-and-drop upload support
+* Batch image inference
+* Docker support
+* Cloud deployment
+* Model quantization for faster inference
+
+---
+
+# 🤝 Team
+
+Developed as part of the **Bharatiya Antariksh Hackathon (BAH) 2026**.
+
+---
+
+# 📄 License
 
 This repository includes the official preprocessing baseline provided for the Bharatiya Antariksh Hackathon.
 
-The AI models, training pipeline, inference pipeline, evaluation framework, backend services, frontend application, and documentation have been developed as part of our hackathon solution.
+The AI models, training pipeline, backend, frontend, inference system, and documentation have been developed as part of our hackathon solution.
+
+Please follow the hackathon guidelines regarding the usage and redistribution of the provided baseline resources.
 
 ---
 
-# 👥 Team
+# ⭐ Acknowledgements
 
-Developed for **Bharatiya Antariksh Hackathon (BAH) 2026**
+* Bharatiya Antariksh Hackathon (BAH) 2026
+* PyTorch
+* FastAPI
+* React
+* Vite
+* OpenCV
+* NumPy
 
 ---
 
-## ⭐ Project Progress
-
-**Overall Completion:** **96%**
-
-**Current Focus:** UI/UX Redesign • Model Optimization • Dataset Expansion
+## 🌟 If you found this project interesting, consider giving it a star on GitHub!

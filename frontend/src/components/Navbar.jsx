@@ -1,17 +1,34 @@
+import logo from "../assets/logo.png";
+
 export default function Navbar() {
-    return (
-        <nav className="w-full bg-slate-900 shadow-lg">
-            <div className="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+  return (
+    <header className="navbar">
+      <div className="container nav-container">
 
-                <h1 className="text-3xl font-bold text-cyan-400">
-                    IRVision AI
-                </h1>
+        <div className="logo">
+          <img src={logo} alt="IRVision AI" />
+          <span>
+            IRVision <span style={{ color: "var(--primary)" }}>AI</span>
+          </span>
+        </div>
 
-                <p className="text-slate-300">
-                    Thermal Image Colorization
-                </p>
-
-            </div>
+        <nav>
+          <a href="#hero">Home</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#upload">Upload</a>
+          <a href="#applications">Applications</a>
         </nav>
-    );
+
+        <a
+          className="github-btn"
+          href="https://github.com/Jatindra2/BAH2026-IR-Colorization"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
+
+      </div>
+    </header>
+  );
 }

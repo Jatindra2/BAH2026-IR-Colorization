@@ -1,69 +1,81 @@
 import os
 import sys
 
-import numpy as np
+ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
 import torch
+import numpy as np
+from pathlib import Path
 
-PROJECT_ROOT = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), "..")
-)
-
-if PROJECT_ROOT not in sys.path:
-    sys.path.append(PROJECT_ROOT)
-
-from inference.utils import normalize, save_rgb_image
+from model_loader import get_models
+from logger import logger
+from utils import save_rgb_image
 
 
-def predict_image(
-    image_path,
-    sr_model,
-    color_model,
-):
+from config import DEVICE
 
-    device = next(sr_model.parameters()).device
+# Load models once
+sr_model, color_model = get_models()
 
-    thermal = np.load(image_path)
 
-    thermal = normalize(thermal)
+def predict_image(input_path: Path, output_path: Path):
 
-    thermal = torch.from_numpy(
-        thermal
-    ).float()
+    # -----------------------------
+    # Load .npy thermal image
+    # -----------------------------
+    image = np.load(input_path)
 
-    if thermal.ndim == 2:
-        thermal = thermal.unsqueeze(0).unsqueeze(0)
+    # Remove batch dimension if present
+    if image.ndim == 3:
+        image = image.squeeze(0)
 
-    elif thermal.ndim == 3:
-        thermal = thermal.unsqueeze(0)
+    image = image.astype(np.float32)
 
-    thermal = thermal.to(device)
+    # -----------------------------
+    # Normalize safely
+    # -----------------------------
+    max_val = image.max()
 
-    with torch.no_grad():
+    if max_val > 0:
+        image = image / max_val
 
-        sr = sr_model(thermal)
+    # -----------------------------
+    # Convert to Tensor
+    # -----------------------------
+    tensor = torch.from_numpy(image)
 
-        prediction = color_model(sr)
+    tensor = tensor.unsqueeze(0).unsqueeze(0)
 
-    prediction = (
-        prediction.squeeze(0)
-        .permute(1, 2, 0)
-        .cpu()
-        .numpy()
-    )
+    tensor = tensor.to(DEVICE)
 
-    os.makedirs(
-        "temp",
-        exist_ok=True,
-    )
+    # -----------------------------
+    # AI Inference
+    # -----------------------------
+    logger.info("Running AI inference...")
+    # Super Resolution
+    sr = sr_model(tensor)
 
-    output_path = os.path.join(
-        "temp",
-        "prediction.png",
-    )
+    # Colorization
+    rgb_output = color_model(sr)
 
-    save_rgb_image(
-        prediction,
-        output_path,
-    )
+    # -----------------------------
+    # Convert Output
+    # -----------------------------
+    rgb_output = rgb_output.squeeze(0)
+
+    rgb_output = rgb_output.permute(1, 2, 0)
+
+    rgb_output = rgb_output.detach().cpu().numpy()
+
+    rgb_output = np.clip(rgb_output, 0, 1)
+
+    # -----------------------------
+    # Save Image
+    # -----------------------------
+    save_rgb_image(rgb_output, str(output_path))
 
     return output_path
+
+logger.info("Prediction saved successfully.")

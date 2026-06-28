@@ -1,7 +1,12 @@
-@import "tailwindcss";
-
-body{
-    margin:0;
-    font-family:Inter,sans-serif;
-    background:#0f172a;
-}
+@import "./styles/variables.css";
+@import "./styles/colors.css";
+@import "./styles/global.css";
+@import "./styles/animations.css";
+@import "./styles/navbar.css";
+@import "./styles/hero.css";
+@import "./styles/about.css";
+@import "./styles/workflow.css";
+@import "./styles/upload.css";
+@import "./styles/processing.css";
+@import "./styles/results.css";
+@import "./styles/applications.css";

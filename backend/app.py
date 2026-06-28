@@ -1,42 +1,45 @@
+from pathlib import Path
+import shutil
+from cleanup import remove_file
+
+from validators import (
+    validate_file,
+    validate_file_size,
+)
+
+from logger import logger
+
+from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import FileResponse
-import tempfile
-import os
 
-from backend.inference import predict_image
-from backend.model_loader import load_models
+from inference import predict_image
 
-# --------------------------------------------------
-# FastAPI App
-# --------------------------------------------------
+from config import (
+    UPLOAD_DIR,
+    OUTPUT_DIR,
+    API_TITLE,
+    API_VERSION,
+)
+
+from config import ALLOWED_ORIGINS
+
 app = FastAPI(
-    title="IRVision AI API",
-    version="1.0.0",
+    title=API_TITLE,
+    version=API_VERSION,
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-    ],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-# --------------------------------------------------
-# Load Models Once
-# --------------------------------------------------
-sr_model, color_model = load_models()
 
-print("Backend Ready")
 
-# --------------------------------------------------
-# Health Check
-# --------------------------------------------------
 @app.get("/")
-def home():
+def root():
     return {
         "message": "IRVision AI Backend Running"
     }
@@ -48,31 +51,53 @@ def health():
         "status": "healthy"
     }
 
-# --------------------------------------------------
-# Prediction Endpoint
-# --------------------------------------------------
+
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
 
-    suffix = os.path.splitext(file.filename)[1]
+    file_path = None
 
-    with tempfile.NamedTemporaryFile(
-        delete=False,
-        suffix=suffix,
-    ) as temp:
+    try:
 
-        temp.write(await file.read())
+        # Validate upload
+        validate_file(file)
+        validate_file_size(file)
 
-        temp_path = temp.name
+        logger.info(f"Uploading {file.filename}")
 
-    output_path = predict_image(
-        temp_path,
-        sr_model,
-        color_model,
-    )
+        file_path = UPLOAD_DIR / file.filename
 
-    return FileResponse(
-        output_path,
-        media_type="image/png",
-        filename="prediction.png",
-    )
+        with open(file_path, "wb") as buffer:
+            shutil.copyfileobj(file.file, buffer)
+
+        output_path = OUTPUT_DIR / "prediction.png"
+
+        predict_image(
+            input_path=file_path,
+            output_path=output_path,
+        )
+
+        logger.info("Prediction completed successfully")
+
+        return FileResponse(
+            path=output_path,
+            media_type="image/png",
+            filename="prediction.png",
+        )
+
+    except HTTPException:
+        raise
+
+    except Exception as e:
+
+        logger.exception(e)
+
+        raise HTTPException(
+            status_code=500,
+            detail=str(e),
+        )
+
+    finally:
+
+        if file_path is not None:
+            remove_file(file_path)

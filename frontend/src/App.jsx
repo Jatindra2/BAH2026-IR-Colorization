@@ -1,73 +1,49 @@
 import { useState } from "react";
 
 import Navbar from "./components/Navbar";
-import UploadCard from "./components/UploadCard";
-import Loader from "./components/Loader";
-import ResultCard from "./components/ResultCard";
+import Hero from "./components/Hero";
+import About from "./components/About";
+import Workflow from "./components/Workflow";
+import UploadSection from "./components/UploadSection";
+import Processing from "./components/Processing";
+import Results from "./components/Results";
+import Applications from "./components/Applications";
+import Footer from "./components/Footer";
 
-import api from "./services/api";
+import "./index.css";
 
-export default function App() {
+function App() {
+  const [prediction, setPrediction] = useState(null);
+  const [status, setStatus] = useState("idle");
+  const [error, setError] = useState("");
 
-    const [file, setFile] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [image, setImage] = useState(null);
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <About />
+      <Workflow />
 
-    async function predict() {
+      <UploadSection
+        setPrediction={setPrediction}
+        setStatus={setStatus}
+        setError={setError}
+        error={error}
+        status={status}
+      />
 
-        if (!file) {
-            alert("Please select a .npy thermal image");
-            return;
-        }
+      <Processing status={status} />
 
-        setLoading(true);
+      <Results
+        prediction={prediction}
+        status={status}
+        error={error}
+      />
 
-        const formData = new FormData();
-        formData.append("file", file);
-
-        try {
-
-            const response = await api.post(
-                "/predict",
-                formData,
-                {
-                    responseType: "blob",
-                }
-            );
-
-            const url = URL.createObjectURL(response.data);
-            setImage(url);
-
-        } catch (err) {
-
-            console.error(err);
-            alert("Prediction failed.");
-
-        }
-
-        setLoading(false);
-    }
-
-    return (
-
-        <div className="min-h-screen bg-slate-900">
-
-            <Navbar />
-
-            <div className="max-w-4xl mx-auto py-12 px-6">
-
-                <UploadCard
-                    setFile={setFile}
-                    predict={predict}
-                />
-
-                {loading && <Loader />}
-
-                <ResultCard image={image} />
-
-            </div>
-
-        </div>
-
-    );
+      <Applications />
+      <Footer />
+    </>
+  );
 }
+
+export default App;

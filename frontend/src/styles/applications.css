@@ -1,0 +1,38 @@
+.applications-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:30px;
+
+}
+
+.application-card{
+
+    background:var(--card);
+    padding:35px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+
+}
+
+.application-card:hover{
+
+    transform:translateY(-6px);
+    border-color:var(--primary);
+
+}
+
+.application-card h3{
+
+    color:var(--primary);
+    margin-bottom:18px;
+
+}
+
+.application-card p{
+
+    color:var(--text-secondary);
+    line-height:1.8;
+
+}

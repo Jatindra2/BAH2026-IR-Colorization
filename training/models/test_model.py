@@ -1,14 +1,14 @@
 import torch
 
-from colorization_net import ColorizationNet
+from super_resolution_net import SuperResolutionNet
 
-model = ColorizationNet()
 
-x = torch.randn(2, 1, 512, 512)
+model = SuperResolutionNet()
+
+x = torch.randn(1, 1, 256, 256)
 
 y = model(x)
 
-print("Input Shape :", x.shape)
-print("Output Shape:", y.shape)
+print("Input :", x.shape)
 
-print("\nModel Loaded Successfully ✅")
+print("Output:", y.shape)
