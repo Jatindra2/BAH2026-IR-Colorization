@@ -118,6 +118,6 @@ class Trainer:
                     ),
                 )
 
-                print("✅ Best Colorization Model Saved")
+                print("[SUCCESS] Best Colorization Model Saved")
 
         print("\nTraining Finished Successfully.")
