@@ -93,6 +93,6 @@ class Trainer:
                     os.path.join(self.checkpoint_dir, "best_sr_model.pth"),
                 )
 
-                print("✅ Best model saved.")
+                print("[SUCCESS] Best model saved.")
 
         print("\nTraining Completed Successfully.")

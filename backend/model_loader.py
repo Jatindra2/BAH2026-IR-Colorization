@@ -55,11 +55,11 @@ def load_super_resolution_model():
 
         model.load_state_dict(checkpoint)
 
-        print("✓ Loaded Super Resolution model")
+        print("[SUCCESS] Loaded Super Resolution model")
 
     else:
 
-        print("⚠ Super Resolution checkpoint not found.")
+        print("WARNING: Super Resolution checkpoint not found.")
 
     model.to(DEVICE)
     model.eval()
@@ -88,11 +88,11 @@ def load_colorization_model():
 
         model.load_state_dict(checkpoint)
 
-        print("✓ Loaded Colorization model")
+        print("[SUCCESS] Loaded Colorization model")
 
     else:
 
-        print("⚠ Colorization checkpoint not found.")
+        print("WARNING: Colorization checkpoint not found.")
 
     model.to(DEVICE)
     model.eval()

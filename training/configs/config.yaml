@@ -4,21 +4,21 @@ dataset:
 
 # DataLoader
 dataloader:
-  batch_size: 2
+  batch_size: 4
   shuffle: true
   num_workers: 0
 
 # Training
 training:
-  epochs: 50
+  epochs: 80
   learning_rate: 0.0002
-  device: "cpu"
+  device: "cuda"
 
 # Model
 model:
   image_size: 512
   input_channels: 1
-  output_channels: 3
+  output_channels: 2
 
 # Checkpoints
 checkpoint:

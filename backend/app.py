@@ -72,18 +72,14 @@ async def predict(file: UploadFile = File(...)):
 
         output_path = OUTPUT_DIR / "prediction.png"
 
-        predict_image(
+        result = predict_image(
             input_path=file_path,
             output_path=output_path,
         )
 
         logger.info("Prediction completed successfully")
 
-        return FileResponse(
-            path=output_path,
-            media_type="image/png",
-            filename="prediction.png",
-        )
+        return result
 
     except HTTPException:
         raise

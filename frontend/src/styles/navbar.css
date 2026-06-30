@@ -77,3 +77,28 @@ nav a:hover{
 .github-btn:hover{
     background:var(--primary-dark);
 }
+
+.theme-toggle-btn {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 1.1rem;
+    padding: 8px 14px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.theme-toggle-btn:hover {
+    border-color: var(--primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+:root.light-mode .navbar {
+    background: rgba(240, 244, 248, 0.85);
+    border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}

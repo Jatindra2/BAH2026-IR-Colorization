@@ -18,7 +18,6 @@ export async function uploadImage(file) {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-      responseType: "blob",
     }
   );
 

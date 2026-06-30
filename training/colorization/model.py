@@ -10,7 +10,7 @@ class ColorizationNet(nn.Module):
             encoder_name="resnet18",
             encoder_weights=None,
             in_channels=1,
-            classes=3,
+            classes=2,
             activation="sigmoid",
         )
 

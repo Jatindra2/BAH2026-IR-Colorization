@@ -40,16 +40,11 @@ export default function UploadSection({
     try {
       setStatus("uploading");
 
-      const blob = await uploadImage(file);
+      const data = await uploadImage(file);
 
       setStatus("processing");
 
-      const imageURL = URL.createObjectURL(blob);
-
-      setPrediction((previous) => {
-        if (previous) URL.revokeObjectURL(previous);
-        return imageURL;
-      });
+      setPrediction(data);
 
       setStatus("completed");
 

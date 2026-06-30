@@ -59,20 +59,54 @@ if (!prediction) return null;
           </p>
 
           <div className="success-box">
-            ✅ RGB image generated successfully.
+            ✅ Images generated successfully.
           </div>
 
           <div className="results-grid">
 
             <div className="result-card">
 
-              <h3>Generated RGB Image</h3>
+              <h3>Super-Resolution (100m Grayscale)</h3>
 
               <img
-                src={prediction}
-                alt="Prediction"
+                src={prediction.sr}
+                alt="Super Resolution Grayscale"
                 className="result-image"
               />
+
+              <div className="download-box" style={{ marginTop: "20px" }}>
+                <a
+                  href={prediction.sr}
+                  download="super_resolution_100m.png"
+                >
+                  <button className="theme-toggle-btn" style={{ margin: "0 auto", padding: "10px 20px" }}>
+                    ⬇ Download SR Image
+                  </button>
+                </a>
+              </div>
+
+            </div>
+
+            <div className="result-card">
+
+              <h3>Colorized RGB Image</h3>
+
+              <img
+                src={prediction.colorized}
+                alt="Colorized RGB"
+                className="result-image"
+              />
+
+              <div className="download-box" style={{ marginTop: "20px" }}>
+                <a
+                  href={prediction.colorized}
+                  download="colorized_prediction.png"
+                >
+                  <button className="primary-btn" style={{ margin: "0 auto" }}>
+                    ⬇ Download RGB Image
+                  </button>
+                </a>
+              </div>
 
             </div>
 
@@ -94,19 +128,6 @@ if (!prediction) return null;
               <h4>Status</h4>
               <p>Completed</p>
             </div>
-
-          </div>
-
-          <div className="download-box">
-
-            <a
-              href={prediction}
-              download="prediction.png"
-            >
-              <button className="primary-btn">
-                ⬇ Download RGB Image
-              </button>
-            </a>
 
           </div>
 
