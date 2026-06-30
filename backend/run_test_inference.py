@@ -13,8 +13,6 @@ test_samples = [
     ("LC08/sample_000", "../baseline/output/patches/LC08/sample_000/tir_200m.npy"),
     ("LC08/sample_000_100m", "../baseline/output/patches/LC08/sample_000/tir_100m_512.npy"),
     ("LC09/sample_002", "../baseline/output/patches/LC09/sample_002/tir_200m.npy"),
-    ("LC09/sample_005", "../baseline/output/patches/LC09/sample_005/tir_200m.npy"),
-    ("LC09/sample_014", "../baseline/output/patches/LC09/sample_014/tir_200m.npy"),
 ]
 
 output_dir = Path(__file__).resolve().parent / "test_outputs"
