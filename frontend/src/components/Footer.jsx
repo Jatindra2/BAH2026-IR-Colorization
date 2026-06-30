@@ -20,7 +20,7 @@ export default function Footer() {
           fontWeight: "700",
           color: "var(--text)"
         }}>
-          🛰️ Team <span style={{ color: "var(--primary)" }}>IRVision</span>
+          🛰️ Team <span style={{ color: "var(--primary)" }}>Cipher Sorcerers</span>
         </div>
 
         <p style={{
@@ -45,14 +45,14 @@ export default function Footer() {
           <div>
             <strong>GitHub:</strong>{" "}
             <a 
-              href="https://github.com/Jatindra2" 
+              href="https://github.com/Jatindra2/BAH2026-IR-Colorization" 
               target="_blank" 
               rel="noreferrer"
               style={{ color: "var(--primary)", transition: "var(--transition)" }}
               onMouseOver={(e) => e.target.style.color = "var(--primary-dark)"}
               onMouseOut={(e) => e.target.style.color = "var(--primary)"}
             >
-              Jatindra2
+              BAH2026-IR-Colorization
             </a>
           </div>
 
@@ -75,7 +75,7 @@ export default function Footer() {
           opacity: 0.6,
           marginTop: "10px"
         }}>
-          © {new Date().getFullYear()} Team IRVision. All rights reserved.
+          © {new Date().getFullYear()} Team Cipher Sorcerers. All rights reserved.
         </div>
       </div>
     </footer>
