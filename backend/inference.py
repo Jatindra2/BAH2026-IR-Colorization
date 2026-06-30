@@ -1,5 +1,6 @@
 import os
 import sys
+import cv2
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
@@ -57,18 +58,25 @@ def predict_image(input_path: Path, output_path: Path):
     # Super Resolution
     sr = sr_model(tensor)
 
-    # Colorization
-    rgb_output = color_model(sr)
+    # Colorization (predict ab channels)
+    ab_output = color_model(sr)
 
     # -----------------------------
-    # Convert Output
+    # Convert LAB to RGB
     # -----------------------------
-    rgb_output = rgb_output.squeeze(0)
+    sr_np = sr.squeeze(0).squeeze(0).detach().cpu().numpy() # Shape: (512, 512), range: [0, 1]
+    ab_np = ab_output.squeeze(0).detach().cpu().numpy()     # Shape: (2, 512, 512), range: [0, 1]
 
-    rgb_output = rgb_output.permute(1, 2, 0)
+    # Rescale to native LAB values
+    L = sr_np * 100.0
+    a = ab_np[0] * 255.0 - 128.0
+    b = ab_np[1] * 255.0 - 128.0
 
-    rgb_output = rgb_output.detach().cpu().numpy()
+    # Stack to (512, 512, 3) LAB image
+    lab = np.stack([L, a, b], axis=-1).astype(np.float32)
 
+    # Convert to RGB using cv2
+    rgb_output = cv2.cvtColor(lab, cv2.COLOR_LAB2RGB)
     rgb_output = np.clip(rgb_output, 0, 1)
 
     # -----------------------------

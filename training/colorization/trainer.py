@@ -53,7 +53,7 @@ class Trainer:
         for batch_idx, batch in enumerate(self.dataloader):
 
             lr_tir = batch["lr_tir"].to(self.device)
-            rgb_gt = batch["rgb"].to(self.device)
+            ab_gt = batch["ab"].to(self.device)
 
             # ----------------------------
             # Generate SR image
@@ -66,7 +66,7 @@ class Trainer:
             # ----------------------------
             prediction = self.color_model(sr_tir)
 
-            loss = self.criterion(prediction, rgb_gt)
+            loss = self.criterion(prediction, ab_gt)
 
             self.optimizer.zero_grad()
 
