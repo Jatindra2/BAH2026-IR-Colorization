@@ -30,6 +30,17 @@ class Trainer:
         for param in self.sr_model.parameters():
             param.requires_grad = False
 
+        # Precompute and cache SR model predictions to accelerate CPU training
+        self.sr_cache = {}
+        print("Precomputing Super-Resolution predictions to accelerate training...")
+        with torch.no_grad():
+            for i in range(len(self.dataloader.dataset)):
+                batch_item = self.dataloader.dataset[i]
+                lr_tir = batch_item["lr_tir"].unsqueeze(0).to(self.device)
+                sr_tir = self.sr_model(lr_tir).squeeze(0).cpu() # Cache on CPU/RAM
+                self.sr_cache[batch_item["idx"]] = sr_tir
+        print("Precomputation finished successfully.")
+
         self.best_loss = float("inf")
 
         self.checkpoint_dir = os.path.join(
@@ -52,14 +63,12 @@ class Trainer:
 
         for batch_idx, batch in enumerate(self.dataloader):
 
-            lr_tir = batch["lr_tir"].to(self.device)
+            idxs = batch["idx"]
             ab_gt = batch["ab"].to(self.device)
 
-            # ----------------------------
-            # Generate SR image
-            # ----------------------------
-            with torch.no_grad():
-                sr_tir = self.sr_model(lr_tir)
+            # Retrieve precomputed SR images from cache and load to device
+            sr_tirs = [self.sr_cache[int(idx)].to(self.device) for idx in idxs]
+            sr_tir = torch.stack(sr_tirs, dim=0)
 
             # ----------------------------
             # Colorization
