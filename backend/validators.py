@@ -2,7 +2,7 @@ from pathlib import Path
 
 from fastapi import HTTPException
 
-from config import (
+from backend.config import (
     SUPPORTED_EXTENSIONS,
     MAX_UPLOAD_SIZE,
 )
