@@ -10,12 +10,12 @@ import torch
 import numpy as np
 from pathlib import Path
 
-from model_loader import get_models
-from logger import logger
-from utils import save_rgb_image
+from backend.model_loader import get_models
+from backend.logger import logger
+from backend.utils import save_rgb_image
 
 
-from config import DEVICE
+from backend.config import DEVICE
 
 # Load models once
 sr_model, color_model = get_models()
