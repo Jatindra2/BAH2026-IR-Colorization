@@ -1,28 +1,28 @@
 from pathlib import Path
 import shutil
-from cleanup import remove_file
+from backend.cleanup import remove_file
 
-from validators import (
+from backend.validators import (
     validate_file,
     validate_file_size,
 )
 
-from logger import logger
+from backend.logger import logger
 
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 
-from inference import predict_image
+from backend.inference import predict_image
 
-from config import (
+from backend.config import (
     UPLOAD_DIR,
     OUTPUT_DIR,
     API_TITLE,
     API_VERSION,
 )
 
-from config import ALLOWED_ORIGINS
+from backend.config import ALLOWED_ORIGINS
 
 app = FastAPI(
     title=API_TITLE,
