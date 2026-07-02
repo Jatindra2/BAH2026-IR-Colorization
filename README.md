@@ -176,7 +176,7 @@ Please follow the hackathon guidelines regarding the use of the provided baselin
 
 ---
 
-# 🙏 Acknowledgements
+# Acknowledgements
 
 - Bharatiya Antariksh Hackathon (BAH) 2026
 - PyTorch
